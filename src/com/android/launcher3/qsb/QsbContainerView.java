@@ -93,7 +93,10 @@ public class QsbContainerView extends FrameLayout {
 
             // Only add the view when enabled
             if (FeatureFlags.QSB_ON_FIRST_SCREEN) {
-                mWrapper.addView(createQsb(mWrapper));
+                View qsb = createQsb(mWrapper);
+                if (qsb != null) {
+                    mWrapper.addView(qsb);
+                }
             }
             return mWrapper;
         }
@@ -102,8 +105,7 @@ public class QsbContainerView extends FrameLayout {
             Activity activity = getActivity();
             //mWidgetInfo = getSearchWidgetProvider(activity);
             if (mWidgetInfo == null) {
-                // There is no search provider, just show the default widget.
-                return QsbWidgetHostView.getDefaultView(container);
+                return null;
             }
 
             AppWidgetManagerCompat widgetManager = AppWidgetManagerCompat.getInstance(activity);
@@ -209,7 +211,10 @@ public class QsbContainerView extends FrameLayout {
 
             if (mWrapper != null && getActivity() != null) {
                 mWrapper.removeAllViews();
-                mWrapper.addView(createQsb(mWrapper));
+                View qsb = createQsb(mWrapper);
+                if (qsb != null) {
+                    mWrapper.addView(qsb);
+                }
             }
         }
     }
