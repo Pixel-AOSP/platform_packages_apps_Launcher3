@@ -113,8 +113,7 @@ public class QsbContainerView extends FrameLayout {
             Activity activity = getActivity();
             //mWidgetInfo = getSearchWidgetProvider(activity);
             if (mWidgetInfo == null) {
-                // There is no search provider, just show the default widget.
-                return QsbWidgetHostView.getDefaultView(container);
+                return null;
             }
 
             AppWidgetManager widgetManager = AppWidgetManager.getInstance(activity);
@@ -221,7 +220,10 @@ public class QsbContainerView extends FrameLayout {
 
             if (mWrapper != null && getActivity() != null) {
                 mWrapper.removeAllViews();
-                mWrapper.addView(createQsb(mWrapper));
+                View qsb = createQsb(mWrapper);
+                if (qsb != null) {
+                    mWrapper.addView(qsb);
+                }
             }
         }
 
