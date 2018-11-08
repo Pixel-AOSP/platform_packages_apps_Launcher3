@@ -122,8 +122,7 @@ public class QsbContainerView extends FrameLayout {
         private View createQsb(ViewGroup container) {
             //mWidgetInfo = getSearchWidgetProvider();
             if (mWidgetInfo == null) {
-                // There is no search provider, just show the default widget.
-                return getDefaultView(container, false /* show setup icon */);
+                return null;
             }
             Bundle opts = createBindOptions();
             Activity activity = getActivity();
@@ -208,7 +207,10 @@ public class QsbContainerView extends FrameLayout {
 
             if (mWrapper != null && getActivity() != null) {
                 mWrapper.removeAllViews();
-                mWrapper.addView(createQsb(mWrapper));
+                View qsb = createQsb(mWrapper);
+                if (qsb != null) {
+                    mWrapper.addView(qsb);
+                }
             }
         }
 
