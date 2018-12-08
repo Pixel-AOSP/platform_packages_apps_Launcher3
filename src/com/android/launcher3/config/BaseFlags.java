@@ -42,6 +42,8 @@ abstract class BaseFlags {
     public static final boolean QSB_ON_FIRST_SCREEN = false;
     // When enabled the all-apps icon is not added to the hotseat.
     public static final boolean NO_ALL_APPS_ICON = true;
+    // When enabled, icons not supporting {@link AdaptiveIconDrawable} will be wrapped in {@link FixedScaleDrawable}.
+    public static final boolean LEGACY_ICON_TREATMENT = false;
 
     // When true, custom widgets are loaded using CustomWidgetParser.
     public static final boolean ENABLE_CUSTOM_WIDGETS = false;
