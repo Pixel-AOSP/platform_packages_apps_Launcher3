@@ -135,3 +135,7 @@
 -dontwarn android.app.**
 -dontwarn android.view.**
 -dontwarn android.os.**
+
+-keep class com.android.launcher3.graphics.FixedScaleDrawable {
+  *;
+}
